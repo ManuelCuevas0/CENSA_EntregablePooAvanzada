@@ -1,3 +1,5 @@
+using System.Windows.Forms;
+
 namespace CapaPresentacion
 {
     public partial class VentanaDeInicio : Form
@@ -10,8 +12,42 @@ namespace CapaPresentacion
             InitializeComponent();
             linkLabelSeleccionar.Enabled = false; // Deshabilitar el LinkLabel inicialmente
             linkLabelSeleccionar.LinkClicked += new LinkLabelLinkClickedEventHandler(LinkLabelSeleccionar_LinkClicked);
+            btnEliminar.Click += new EventHandler(btnEliminar_Click); // Agregar el evento Click para el botón Eliminar
+            btnBuscar.Click += new EventHandler(btnBuscar_Click); // Agregar el evento Click para el botón Buscar
             btnGuardar.Click += new EventHandler(btnGuardar_Click); // Agregar el evento Click para el botón Guardar
         }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            string id = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el ID del cliente a buscar:", "Buscar Cliente", "", -1, -1);
+
+            if (!string.IsNullOrEmpty(id))
+            {
+                CNLogueo logueo = new CNLogueo();
+                var registro = logueo.BuscarRegistro(id);
+
+                if (registro != null)
+                {
+                    txtId.Text = registro.Id;
+                    txtNombre.Text = registro.Nombre;
+                    txtApellido.Text = registro.Apellido;
+                    imagePath = registro.ImagePath;
+
+                    // Mostrar la imagen seleccionada en un PictureBox (si tienes uno)
+                    if (!string.IsNullOrEmpty(imagePath))
+                    {
+                        pictureBoxFoto.Image = Image.FromFile(imagePath);
+                    }
+
+                    MessageBox.Show($"Registro encontrado:\n\nID: {registro.Id}\nNombre: {registro.Nombre}\nApellido: {registro.Apellido}\nImagen: {registro.ImagePath}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Registro no encontrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {

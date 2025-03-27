@@ -28,6 +28,8 @@ public class CDLogueo
     }
 
 
+
+
     public void PruebaConexion()
     {
         using (MySqlConnection conexion = new MySqlConnection(CadenaConexion))
@@ -59,6 +61,7 @@ public class CDLogueo
         return registros;
     }
 
+
     public bool InsertarRegistro(string id, string nombre, string apellido, string imagePath)
     {
         using (MySqlConnection conexion = new MySqlConnection(CadenaConexion))
@@ -83,4 +86,47 @@ public class CDLogueo
             }
         }
     }
+
+    public Registro? BuscarRegistro(string id)
+    {
+        using (MySqlConnection conexion = new MySqlConnection(CadenaConexion))
+        {
+            string query = "SELECT id, nombre, apellido, url_foto FROM usuario WHERE id = @Id";
+            MySqlCommand cmd = new MySqlCommand(query, conexion);
+            cmd.Parameters.AddWithValue("@Id", id);
+
+            try
+            {
+                conexion.Open();
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return new Registro
+                        {
+                            Id = reader["id"].ToString(),
+                            Nombre = reader["nombre"].ToString(),
+                            Apellido = reader["apellido"].ToString(),
+                            ImagePath = reader["url_foto"].ToString()
+                        };
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejo de errores
+                return null;
+            }
+        }
+        return null;
+    }
 }
+
+public class Registro
+{
+    public string Id { get; set; }
+    public string Nombre { get; set; }
+    public string Apellido { get; set; }
+    public string ImagePath { get; set; }
+}
+

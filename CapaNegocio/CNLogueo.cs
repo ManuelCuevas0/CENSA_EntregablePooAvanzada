@@ -2,6 +2,12 @@
 
 public class CNLogueo
 {
+    public Registro? BuscarRegistro(string id)
+    {
+        return datos.BuscarRegistro(id);
+    }
+
+
     CDLogueo cDLogueo = new CDLogueo();
 
     public bool EliminarRegistro(string id)
@@ -19,6 +25,7 @@ public class CNLogueo
     {
         return cDLogueo.ObtenerRegistros();
     }
+
 
     private CDLogueo datos = new CDLogueo();
 
