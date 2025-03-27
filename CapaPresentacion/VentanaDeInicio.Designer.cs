@@ -136,6 +136,7 @@
             // 
             // btnNuevo
             // 
+            btnNuevo.Enabled = false;
             btnNuevo.Location = new Point(18, 254);
             btnNuevo.Name = "btnNuevo";
             btnNuevo.Size = new Size(75, 23);
@@ -156,6 +157,7 @@
             // 
             // btnEliminar
             // 
+            btnEliminar.Enabled = false;
             btnEliminar.Location = new Point(18, 283);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(75, 23);
@@ -166,6 +168,7 @@
             // 
             // btnBuscar
             // 
+            btnBuscar.Enabled = false;
             btnBuscar.Location = new Point(122, 283);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(75, 23);

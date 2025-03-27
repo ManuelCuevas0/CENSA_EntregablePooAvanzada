@@ -4,17 +4,18 @@ namespace CapaPresentacion
 {
     public partial class VentanaDeInicio : Form
     {
-        private string? imagePath;
+
         CNLogueo fotocopia = new CNLogueo();
+        private string? imagePath;
 
         public VentanaDeInicio()
         {
             InitializeComponent();
-            linkLabelSeleccionar.Enabled = false; // Deshabilitar el LinkLabel inicialmente
+            linkLabelSeleccionar.Enabled = false;
             linkLabelSeleccionar.LinkClicked += new LinkLabelLinkClickedEventHandler(LinkLabelSeleccionar_LinkClicked);
-            btnEliminar.Click += new EventHandler(btnEliminar_Click); // Agregar el evento Click para el botón Eliminar
-            btnBuscar.Click += new EventHandler(btnBuscar_Click); // Agregar el evento Click para el botón Buscar
-            btnGuardar.Click += new EventHandler(btnGuardar_Click); // Agregar el evento Click para el botón Guardar
+            btnEliminar.Click += new EventHandler(btnEliminar_Click);
+            btnBuscar.Click += new EventHandler(btnBuscar_Click);
+            btnGuardar.Click += new EventHandler(btnGuardar_Click);
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -48,7 +49,6 @@ namespace CapaPresentacion
             }
         }
 
-
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             string id = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el ID del cliente a eliminar:", "Eliminar Cliente", "", -1, -1);
@@ -69,8 +69,6 @@ namespace CapaPresentacion
                 }
             }
         }
-
-
 
         private void GuardarDatos()
         {
@@ -123,7 +121,7 @@ namespace CapaPresentacion
             txtNombre.Enabled = true;
             txtApellido.Enabled = true;
             txtId.Enabled = true;
-            linkLabelSeleccionar.Enabled = true; // Habilitar el LinkLabel cuando se hace clic en el botón
+            linkLabelSeleccionar.Enabled = true;
             btnGuardar.Enabled = true;
         }
 
@@ -141,6 +139,9 @@ namespace CapaPresentacion
         {
             fotocopia.PruebaMysql();
             CargarRegistros();
+            btnNuevo.Enabled = true;
+            btnEliminar.Enabled = true;
+            btnBuscar.Enabled = true;
         }
     }
 }

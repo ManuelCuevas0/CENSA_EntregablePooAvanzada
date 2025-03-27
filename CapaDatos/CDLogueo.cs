@@ -27,9 +27,6 @@ public class CDLogueo
         }
     }
 
-
-
-
     public void PruebaConexion()
     {
         using (MySqlConnection conexion = new MySqlConnection(CadenaConexion))
@@ -60,7 +57,6 @@ public class CDLogueo
 
         return registros;
     }
-
 
     public bool InsertarRegistro(string id, string nombre, string apellido, string imagePath)
     {

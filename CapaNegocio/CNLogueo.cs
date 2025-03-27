@@ -2,19 +2,18 @@
 
 public class CNLogueo
 {
+
+    CDLogueo cDLogueo = new CDLogueo();
+
     public Registro? BuscarRegistro(string id)
     {
         return datos.BuscarRegistro(id);
     }
 
-
-    CDLogueo cDLogueo = new CDLogueo();
-
     public bool EliminarRegistro(string id)
     {
         return datos.EliminarRegistro(id);
     }
-
 
     public void PruebaMysql()
     {
@@ -25,7 +24,6 @@ public class CNLogueo
     {
         return cDLogueo.ObtenerRegistros();
     }
-
 
     private CDLogueo datos = new CDLogueo();
 
