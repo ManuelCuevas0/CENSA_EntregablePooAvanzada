@@ -35,4 +35,29 @@ public class CDLogueo
 
         return registros;
     }
+
+    public bool InsertarRegistro(string id, string nombre, string apellido, string imagePath)
+    {
+        using (MySqlConnection conexion = new MySqlConnection(CadenaConexion))
+        {
+            string query = "INSERT INTO usuario (id, nombre, apellido, url_foto) VALUES (@Id, @Nombre, @Apellido, @ImagePath)";
+            MySqlCommand cmd = new MySqlCommand(query, conexion);
+            cmd.Parameters.AddWithValue("@Id", id);
+            cmd.Parameters.AddWithValue("@Nombre", nombre);
+            cmd.Parameters.AddWithValue("@Apellido", apellido);
+            cmd.Parameters.AddWithValue("@ImagePath", imagePath);
+
+            try
+            {
+                conexion.Open();
+                int result = cmd.ExecuteNonQuery();
+                return result > 0;
+            }
+            catch (Exception ex)
+            {
+                // Manejo de errores
+                return false;
+            }
+        }
+    }
 }

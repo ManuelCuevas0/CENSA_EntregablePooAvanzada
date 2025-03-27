@@ -13,4 +13,11 @@ public class CNLogueo
     {
         return cDLogueo.ObtenerRegistros();
     }
+
+    private CDLogueo datos = new CDLogueo();
+
+    public bool GuardarRegistro(string id, string nombre, string apellido, string imagePath)
+    {
+        return datos.InsertarRegistro(id, nombre, apellido, imagePath);
+    }
 }

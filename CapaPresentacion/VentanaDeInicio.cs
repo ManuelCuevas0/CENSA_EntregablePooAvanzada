@@ -10,6 +10,38 @@ namespace CapaPresentacion
             InitializeComponent();
             linkLabelSeleccionar.Enabled = false; // Deshabilitar el LinkLabel inicialmente
             linkLabelSeleccionar.LinkClicked += new LinkLabelLinkClickedEventHandler(LinkLabelSeleccionar_LinkClicked);
+            btnGuardar.Click += new EventHandler(btnGuardar_Click); // Agregar el evento Click para el botón Guardar
+        }
+
+        private void GuardarDatos()
+        {
+            string nombre = txtNombre.Text;
+            string apellido = txtApellido.Text;
+            string id = txtId.Text;
+
+            if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(apellido) || string.IsNullOrEmpty(id) || string.IsNullOrEmpty(imagePath))
+            {
+                MessageBox.Show("Por favor, complete todos los campos y seleccione una imagen.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            CNLogueo logueo = new CNLogueo();
+            bool resultado = logueo.GuardarRegistro(id, nombre, apellido, imagePath);
+
+            if (resultado)
+            {
+                MessageBox.Show("Registro guardado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CargarRegistros();
+            }
+            else
+            {
+                MessageBox.Show("Error al guardar el registro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            GuardarDatos();
         }
 
         private void LinkLabelSeleccionar_LinkClicked(object? sender, LinkLabelLinkClickedEventArgs e)
@@ -33,6 +65,7 @@ namespace CapaPresentacion
             txtApellido.Enabled = true;
             txtId.Enabled = true;
             linkLabelSeleccionar.Enabled = true; // Habilitar el LinkLabel cuando se hace clic en el botón
+            btnGuardar.Enabled = true;
         }
 
         private void CargarRegistros()
