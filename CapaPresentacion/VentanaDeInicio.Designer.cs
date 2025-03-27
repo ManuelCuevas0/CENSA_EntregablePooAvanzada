@@ -42,6 +42,7 @@
             btnGuardar = new Button();
             btnEliminar = new Button();
             btnBuscar = new Button();
+            btnConexion = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBoxFoto).BeginInit();
             SuspendLayout();
             // 
@@ -141,6 +142,7 @@
             btnNuevo.TabIndex = 10;
             btnNuevo.Text = "Nuevo";
             btnNuevo.UseVisualStyleBackColor = true;
+            btnNuevo.Click += btnNuevo_Click;
             // 
             // btnGuardar
             // 
@@ -170,11 +172,22 @@
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // btnConexion
+            // 
+            btnConexion.Location = new Point(61, 312);
+            btnConexion.Name = "btnConexion";
+            btnConexion.Size = new Size(75, 23);
+            btnConexion.TabIndex = 14;
+            btnConexion.Text = "Conexion";
+            btnConexion.UseVisualStyleBackColor = true;
+            btnConexion.Click += btnConexion_Click;
+            // 
+            // VentanaDeInicio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 360);
+            Controls.Add(btnConexion);
             Controls.Add(btnBuscar);
             Controls.Add(btnEliminar);
             Controls.Add(btnGuardar);
@@ -189,7 +202,7 @@
             Controls.Add(txtNombre);
             Controls.Add(txtApellido);
             Controls.Add(txtId);
-            Name = "Form1";
+            Name = "VentanaDeInicio";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)pictureBoxFoto).EndInit();
             ResumeLayout(false);
@@ -212,5 +225,6 @@
         private Button btnGuardar;
         private Button btnEliminar;
         private Button btnBuscar;
+        private Button btnConexion;
     }
 }

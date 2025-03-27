@@ -9,7 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="9.2.0" />
+    <PackageReference Include="MySqlConnector" Version="2.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CapaEntidades\CapaEntidades.csproj" />
+	<ProjectReference Include="..\CapaNegocio\CapaNegocio.csproj" />
   </ItemGroup>
 
 </Project>
