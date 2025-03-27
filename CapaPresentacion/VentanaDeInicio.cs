@@ -1,8 +1,8 @@
 namespace CapaPresentacion
 {
-    public partial class Form1 : Form
+    public partial class VentanaDeInicio : Form
     {
-        public Form1()
+        public VentanaDeInicio()
         {
             InitializeComponent();
         }
