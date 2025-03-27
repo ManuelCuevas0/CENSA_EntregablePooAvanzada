@@ -13,6 +13,29 @@ namespace CapaPresentacion
             btnGuardar.Click += new EventHandler(btnGuardar_Click); // Agregar el evento Click para el botón Guardar
         }
 
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            string id = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el ID del cliente a eliminar:", "Eliminar Cliente", "", -1, -1);
+
+            if (!string.IsNullOrEmpty(id))
+            {
+                CNLogueo logueo = new CNLogueo();
+                bool resultado = logueo.EliminarRegistro(id);
+
+                if (resultado)
+                {
+                    MessageBox.Show("Registro eliminado exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarRegistros();
+                }
+                else
+                {
+                    MessageBox.Show("Error al eliminar el registro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+
+
         private void GuardarDatos()
         {
             string nombre = txtNombre.Text;

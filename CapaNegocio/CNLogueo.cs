@@ -4,6 +4,12 @@ public class CNLogueo
 {
     CDLogueo cDLogueo = new CDLogueo();
 
+    public bool EliminarRegistro(string id)
+    {
+        return datos.EliminarRegistro(id);
+    }
+
+
     public void PruebaMysql()
     {
         cDLogueo.PruebaConexion();
